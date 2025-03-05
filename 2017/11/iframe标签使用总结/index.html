@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>iframe标签使用总结 - Woad的博客</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Woad的博客"><meta name="msapplication-TileImage" content="/images/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Woad的博客"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="一、&amp;lt;iframe&amp;gt; 的作用 嵌入外部内容   加载第三方页面（如地图、视频、广告等）。 隔离不同来源的内容（如跨域资源）。   沙箱环境   通过 sandbox 属性限制子页面的行为（如脚本执行、表单提交）。   模块化开发   独立加载子模块，避免样式&amp;#x2F;脚本污染主页面。    二、&amp;lt;iframe&amp;gt; 的优缺点优点   特性 说明    内容隔离 子页面与父页面"><meta property="og:type" content="blog"><meta property="og:title" content="iframe标签使用总结"><meta property="og:url" content="https://linglingsan.github.io/2017/11/iframe%E6%A0%87%E7%AD%BE%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/"><meta property="og:site_name" content="Woad的博客"><meta property="og:description" content="一、&amp;lt;iframe&amp;gt; 的作用 嵌入外部内容   加载第三方页面（如地图、视频、广告等）。 隔离不同来源的内容（如跨域资源）。   沙箱环境   通过 sandbox 属性限制子页面的行为（如脚本执行、表单提交）。   模块化开发   独立加载子模块，避免样式&amp;#x2F;脚本污染主页面。    二、&amp;lt;iframe&amp;gt; 的优缺点优点   特性 说明    内容隔离 子页面与父页面"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://linglingsan.github.io/img/og_image.png"><meta property="article:published_time" content="2017-11-19T11:58:00.000Z"><meta property="article:modified_time" content="2025-03-04T05:45:29.441Z"><meta property="article:author" content="Woad"><meta property="article:tag" content="html"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://linglingsan.github.io/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://linglingsan.github.io/2017/11/iframe%E6%A0%87%E7%AD%BE%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/"},"headline":"iframe标签使用总结","image":["https://linglingsan.github.io/img/og_image.png"],"datePublished":"2017-11-19T11:58:00.000Z","dateModified":"2025-03-04T05:45:29.441Z","author":{"@type":"Person","name":"Woad"},"publisher":{"@type":"Organization","name":"Woad的博客","logo":{"@type":"ImageObject","url":"https://linglingsan.github.io/images/logo.svg"}},"description":"一、&lt;iframe&gt; 的作用 嵌入外部内容   加载第三方页面（如地图、视频、广告等）。 隔离不同来源的内容（如跨域资源）。   沙箱环境   通过 sandbox 属性限制子页面的行为（如脚本执行、表单提交）。   模块化开发   独立加载子模块，避免样式&#x2F;脚本污染主页面。    二、&lt;iframe&gt; 的优缺点优点   特性 说明    内容隔离 子页面与父页面"}</script><link rel="canonical" href="https://linglingsan.github.io/2017/11/iframe%E6%A0%87%E7%AD%BE%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/"><link rel="icon" href="/images/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link data-pjax rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link data-pjax rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
+
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
+
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/images/logo.svg" alt="Woad的博客" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">主页</a><a class="navbar-item" href="/archives">归档</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a></div><div class="navbar-end"><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-6-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2017-11-19T11:58:00.000Z" title="2017/11/19 下午7:58:00">2017-11-19</time>发表</span><span class="level-item"><a class="link-muted" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></span><span class="level-item">3 分钟读完 (大约473个字)</span></div></div><h1 class="title is-3 is-size-4-mobile">iframe标签使用总结</h1><div class="content"><h5 id="一、-的作用"><a href="#一、-的作用" class="headerlink" title="一、&lt;iframe&gt; 的作用"></a>一、<code>&lt;iframe&gt;</code> 的作用</h5><ol>
+<li><strong>嵌入外部内容</strong>  <ul>
+<li>加载第三方页面（如地图、视频、广告等）。</li>
+<li>隔离不同来源的内容（如跨域资源）。</li>
+</ul>
+</li>
+<li><strong>沙箱环境</strong>  <ul>
+<li>通过 <code>sandbox</code> 属性限制子页面的行为（如脚本执行、表单提交）。</li>
+</ul>
+</li>
+<li><strong>模块化开发</strong>  <ul>
+<li>独立加载子模块，避免样式&#x2F;脚本污染主页面。</li>
+</ul>
+</li>
+</ol>
+<h5 id="二、-的优缺点"><a href="#二、-的优缺点" class="headerlink" title="二、&lt;iframe&gt; 的优缺点"></a>二、<code>&lt;iframe&gt;</code> 的优缺点</h5><h6 id="优点"><a href="#优点" class="headerlink" title="优点"></a><strong>优点</strong></h6><table>
+<thead>
+<tr>
+<th>特性</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>内容隔离</strong></td>
+<td>子页面与父页面 CSS&#x2F;JS 作用域隔离，避免冲突。</td>
+</tr>
+<tr>
+<td><strong>并行加载</strong></td>
+<td>主页面与子页面可并行加载，提升性能。</td>
+</tr>
+<tr>
+<td><strong>跨域支持</strong></td>
+<td>可嵌入不同域的内容（需配合 CORS）。</td>
+</tr>
+<tr>
+<td><strong>沙箱安全</strong></td>
+<td>通过 <code>sandbox</code> 限制子页面权限，降低安全风险。</td>
+</tr>
+</tbody></table>
+<h6 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a><strong>缺点</strong></h6><table>
+<thead>
+<tr>
+<th>问题</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>SEO 不友好</strong></td>
+<td>搜索引擎可能无法抓取 iframe 内部内容。</td>
+</tr>
+<tr>
+<td><strong>性能开销</strong></td>
+<td>多个 iframe 会增加内存和网络请求。</td>
+</tr>
+<tr>
+<td><strong>管理复杂</strong></td>
+<td>需要动态调整尺寸（如自适应高度）、处理内部页面事件等。</td>
+</tr>
+<tr>
+<td><strong>安全风险</strong></td>
+<td>恶意 iframe 可能引发点击劫持（Clickjacking）攻击。</td>
+</tr>
+</tbody></table>
+<hr>
+<h5 id="三、-跨消息传递-postMessage"><a href="#三、-跨消息传递-postMessage" class="headerlink" title="三、&lt;iframe&gt; 跨消息传递 (postMessage)"></a>三、<code>&lt;iframe&gt;</code> 跨消息传递 (<code>postMessage</code>)</h5><ul>
+<li><strong>发送消息</strong>  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 父页面向子页面发送消息</span></span><br><span class="line">iframe.<span class="property">contentWindow</span>.<span class="title function_">postMessage</span>(data, targetOrigin);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 子页面向父页面发送消息</span></span><br><span class="line"><span class="variable language_">window</span>.<span class="property">parent</span>.<span class="title function_">postMessage</span>(data, targetOrigin);</span><br></pre></td></tr></table></figure></li>
+<li><strong>接收消息</strong><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">window</span>.<span class="title function_">addEventListener</span>(<span class="string">&#x27;message&#x27;</span>, <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (event.<span class="property">origin</span> !== <span class="string">&#x27;信任的域名&#x27;</span>) <span class="keyword">return</span>; <span class="comment">// 验证来源</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;收到消息:&#x27;</span>, event.<span class="property">data</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h5 id="四、注意事项"><a href="#四、注意事项" class="headerlink" title="四、注意事项"></a>四、注意事项</h5><ul>
+<li>安全性 始终验证 event.origin，防止恶意网站伪造消息。</li>
+<li>数据格式  postMessage 支持传递字符串、对象等可序列化数据。</li>
+<li>性能优化  避免频繁通信，减少性能损耗。</li>
+<li>跨域限制  若子页面与父页面不同源，需确保子页面部署正确的 CORS 策略。</li>
+</ul>
+</div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/html/">html</a></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2018/05/script%E6%A0%87%E7%AD%BE%E9%83%A8%E5%88%86%E5%B1%9E%E6%80%A7%E6%80%BB%E7%BB%93/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">script标签部分属性总结</span></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1 is-sticky"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar is-rounded" src="/images/avatar.png" alt="Woad"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Woad</p><p class="is-size-6 is-block">web前端工程师</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>深圳</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives/"><p class="title">16</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories/"><p class="title">3</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags/"><p class="title">10</p></a></div></div></nav></div></div><!--!--><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/Linux/"><span class="level-start"><span class="level-item">Linux</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/categories/Nodejs/"><span class="level-start"><span class="level-item">Nodejs</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/%E5%89%8D%E7%AB%AF/"><span class="level-start"><span class="level-item">前端</span></span><span class="level-end"><span class="level-item tag">9</span></span></a></li></ul></div></div></div><div class="column-right-shadow is-hidden-widescreen is-sticky"></div></div><div class="column column-right is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only order-3 is-sticky"><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2025-03-05T08:13:00.000Z">2025-03-05</time></p><p class="title"><a href="/2025/03/hello-world/">找工作</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-06-25T12:12:00.000Z">2024-06-25</time></p><p class="title"><a href="/2024/06/h5%E5%94%A4%E8%B5%B7APP/">h5唤起APP</a></p><p class="categories"><a href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-04-12T13:52:00.000Z">2024-04-12</time></p><p class="title"><a href="/2024/04/h5%E8%87%AA%E5%AE%9A%E4%B9%89%E5%BE%AE%E4%BF%A1%E5%88%86%E4%BA%AB/">h5自定义微信分享</a></p><p class="categories"><a href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-02-01T12:19:00.000Z">2024-02-01</time></p><p class="title"><a href="/2024/02/service%20worker%E6%9B%B4%E6%96%B0%E6%96%B9%E6%A1%88/">service worker更新方案</a></p><p class="categories"><a href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-01-13T13:39:00.000Z">2024-01-13</time></p><p class="title"><a href="/2024/01/websocket%E5%BF%83%E8%B7%B3%E6%A3%80%E6%B5%8B/">WebSocket 心跳检测机制</a></p><p class="categories"><a href="/categories/Nodejs/">Nodejs</a></p></div></article></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/CI-CD/"><span class="tag">CI/CD</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Nginx/"><span class="tag">Nginx</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/css/"><span class="tag">css</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/docker/"><span class="tag">docker</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/h5/"><span class="tag">h5</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/html/"><span class="tag">html</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/sentry/"><span class="tag">sentry</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/webSocket/"><span class="tag">webSocket</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%AE%89%E5%85%A8/"><span class="tag">安全</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"><span class="tag">性能优化</span><span class="tag">4</span></a></div></div></div></div></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/images/logo.svg" alt="Woad的博客" height="28"></a><p class="is-size-7"><span>&copy; 2025 Woad</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script data-pjax src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script data-pjax src="/js/back_to_top.js" defer></script><script data-pjax src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script data-pjax src="/js/insight.js" defer></script><script data-pjax>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>

@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>script标签部分属性总结 - Woad的博客</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Woad的博客"><meta name="msapplication-TileImage" content="/images/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Woad的博客"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="一、script、script async 和 script defer的区别以下是三者在 HTML 中加载和执行 JavaScript 的对比：    特性 &amp;lt;script&amp;gt; &amp;lt;script async&amp;gt; &amp;lt;script defer&amp;gt;    加载行为 立即加载并阻塞 HTML 解析 异步加载，不阻塞 HTML 解析 异步加载，不阻塞 HTML 解析   执行时"><meta property="og:type" content="blog"><meta property="og:title" content="script标签部分属性总结"><meta property="og:url" content="https://linglingsan.github.io/2018/05/script%E6%A0%87%E7%AD%BE%E9%83%A8%E5%88%86%E5%B1%9E%E6%80%A7%E6%80%BB%E7%BB%93/"><meta property="og:site_name" content="Woad的博客"><meta property="og:description" content="一、script、script async 和 script defer的区别以下是三者在 HTML 中加载和执行 JavaScript 的对比：    特性 &amp;lt;script&amp;gt; &amp;lt;script async&amp;gt; &amp;lt;script defer&amp;gt;    加载行为 立即加载并阻塞 HTML 解析 异步加载，不阻塞 HTML 解析 异步加载，不阻塞 HTML 解析   执行时"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://linglingsan.github.io/img/og_image.png"><meta property="article:published_time" content="2018-05-06T06:32:00.000Z"><meta property="article:modified_time" content="2025-03-04T05:50:53.475Z"><meta property="article:author" content="Woad"><meta property="article:tag" content="html"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://linglingsan.github.io/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://linglingsan.github.io/2018/05/script%E6%A0%87%E7%AD%BE%E9%83%A8%E5%88%86%E5%B1%9E%E6%80%A7%E6%80%BB%E7%BB%93/"},"headline":"script标签部分属性总结","image":["https://linglingsan.github.io/img/og_image.png"],"datePublished":"2018-05-06T06:32:00.000Z","dateModified":"2025-03-04T05:50:53.475Z","author":{"@type":"Person","name":"Woad"},"publisher":{"@type":"Organization","name":"Woad的博客","logo":{"@type":"ImageObject","url":"https://linglingsan.github.io/images/logo.svg"}},"description":"一、script、script async 和 script defer的区别以下是三者在 HTML 中加载和执行 JavaScript 的对比：    特性 &lt;script&gt; &lt;script async&gt; &lt;script defer&gt;    加载行为 立即加载并阻塞 HTML 解析 异步加载，不阻塞 HTML 解析 异步加载，不阻塞 HTML 解析   执行时"}</script><link rel="canonical" href="https://linglingsan.github.io/2018/05/script%E6%A0%87%E7%AD%BE%E9%83%A8%E5%88%86%E5%B1%9E%E6%80%A7%E6%80%BB%E7%BB%93/"><link rel="icon" href="/images/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link data-pjax rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link data-pjax rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
+
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
+
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/images/logo.svg" alt="Woad的博客" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">主页</a><a class="navbar-item" href="/archives">归档</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a></div><div class="navbar-end"><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-6-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2018-05-06T06:32:00.000Z" title="2018/5/6 下午2:32:00">2018-05-06</time>发表</span><span class="level-item"><a class="link-muted" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></span><span class="level-item">7 分钟读完 (大约1122个字)</span></div></div><h1 class="title is-3 is-size-4-mobile">script标签部分属性总结</h1><div class="content"><h3 id="一、script、script-async-和-script-defer的区别"><a href="#一、script、script-async-和-script-defer的区别" class="headerlink" title="一、script、script async 和 script defer的区别"></a>一、script、script async 和 script defer的区别</h3><p>以下是三者在 HTML 中加载和执行 JavaScript 的对比：</p>
+<table>
+<thead>
+<tr>
+<th><strong>特性</strong></th>
+<th><code>&lt;script&gt;</code></th>
+<th><code>&lt;script async&gt;</code></th>
+<th><code>&lt;script defer&gt;</code></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>加载行为</strong></td>
+<td>立即加载并阻塞 HTML 解析</td>
+<td>异步加载，不阻塞 HTML 解析</td>
+<td>异步加载，不阻塞 HTML 解析</td>
+</tr>
+<tr>
+<td><strong>执行时机</strong></td>
+<td>立即执行（阻塞后续解析）</td>
+<td>加载完成后立即执行（可能中断 HTML 解析）</td>
+<td>在 HTML 解析完成后、<code>DOMContentLoaded</code> 事件前按顺序执行</td>
+</tr>
+<tr>
+<td><strong>执行顺序</strong></td>
+<td>按文档顺序执行</td>
+<td><strong>不保证顺序</strong>（先下载完成的先执行）</td>
+<td><strong>严格按文档顺序执行</strong></td>
+</tr>
+<tr>
+<td><strong>适用场景</strong></td>
+<td>需立即执行的脚本</td>
+<td>独立脚本（如统计代码、第三方库）</td>
+<td>依赖 DOM 或需要顺序执行的脚本</td>
+</tr>
+<tr>
+<td><strong>是否等待 HTML 解析</strong></td>
+<td>是</td>
+<td>否</td>
+<td>是（但加载过程不阻塞解析）</td>
+</tr>
+</tbody></table>
+<h4 id="详细说明："><a href="#详细说明：" class="headerlink" title="详细说明："></a>详细说明：</h4><h5 id="1-普通"><a href="#1-普通" class="headerlink" title="1. 普通 &lt;script&gt;"></a>1. <strong>普通 <code>&lt;script&gt;</code></strong></h5><ul>
+<li>遇到标签时立即停止 HTML 解析，下载并执行脚本。</li>
+<li>若脚本较大或网络延迟，会显著延长页面加载时间。</li>
+</ul>
+<h5 id="2"><a href="#2" class="headerlink" title="2. &lt;script async&gt;"></a>2. <strong><code>&lt;script async&gt;</code></strong></h5><ul>
+<li><strong>异步下载</strong>：脚本与 HTML 解析并行加载。</li>
+<li><strong>立即执行</strong>：下载完成后立即执行（可能中断 HTML 解析）。</li>
+<li><strong>不保证顺序</strong>：多个 <code>async</code> 脚本的执行顺序不可预测。</li>
+</ul>
+<h5 id="3"><a href="#3" class="headerlink" title="3. &lt;script defer&gt;"></a>3. <strong><code>&lt;script defer&gt;</code></strong></h5><ul>
+<li><strong>异步下载</strong>：脚本与 HTML 解析并行加载。</li>
+<li><strong>延迟执行</strong>：所有脚本在 HTML 解析完成后按文档顺序执行。</li>
+<li><strong>保证顺序</strong>：适合有依赖关系的脚本（如库文件 + 业务代码）。</li>
+</ul>
+<h4 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 阻塞解析 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;blocking.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 异步加载，不保证顺序 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">async</span> <span class="attr">src</span>=<span class="string">&quot;analytics.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 异步加载，按顺序执行 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">defer</span> <span class="attr">src</span>=<span class="string">&quot;library.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">defer</span> <span class="attr">src</span>=<span class="string">&quot;app.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="小结："><a href="#小结：" class="headerlink" title="小结："></a>小结：</h4><ul>
+<li><strong>阻塞问题</strong>：普通 <code>&lt;script&gt;</code> 会阻塞渲染，<code>async</code>&#x2F;<code>defer</code> 不会。</li>
+<li><strong>执行顺序</strong>：<code>defer</code> 保持顺序，<code>async</code> 不保证。</li>
+<li><strong>DOM 依赖</strong>：<code>defer</code> 脚本可安全操作 DOM，<code>async</code> 脚本可能操作未解析的 DOM。</li>
+<li><strong>性能优化</strong>：优先用 <code>defer</code>，独立脚本用 <code>async</code>，避免普通 <code>&lt;script&gt;</code> 在头部阻塞。</li>
+</ul>
+<hr>
+<h3 id="二、-的-type-类型"><a href="#二、-的-type-类型" class="headerlink" title="二、&lt;script&gt; 的 type 类型"></a>二、<code>&lt;script&gt;</code> 的 <code>type</code> 类型</h3><table>
+<thead>
+<tr>
+<th><strong>类型值</strong></th>
+<th><strong>描述</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>默认（省略或 <code>text/javascript</code>）</strong></td>
+<td>标准 JavaScript 脚本，浏览器按传统方式解析执行。</td>
+</tr>
+<tr>
+<td><strong><code>module</code></strong></td>
+<td>表示脚本为 ES6 模块，支持 <code>import/export</code>，自动启用严格模式，默认 <code>defer</code> 行为。</td>
+</tr>
+<tr>
+<td><strong><code>text/typescript</code></strong></td>
+<td>需配合编译器（如 TypeScript）使用，浏览器不会直接执行。</td>
+</tr>
+<tr>
+<td><strong><code>application/json</code></strong></td>
+<td>非可执行脚本，用于存储数据（需配合其他脚本解析）。</td>
+</tr>
+<tr>
+<td><strong><code>text/html</code></strong></td>
+<td>非脚本内容，浏览器会忽略。</td>
+</tr>
+</tbody></table>
+<h5 id="三、多个标签存在时的变量提升规则"><a href="#三、多个标签存在时的变量提升规则" class="headerlink" title="三、多个标签存在时的变量提升规则"></a>三、多个标签存在时的变量提升规则</h5><h5 id="1-同步脚本（无-async-defer）"><a href="#1-同步脚本（无-async-defer）" class="headerlink" title="1. 同步脚本（无 async/defer）"></a>1. <strong>同步脚本（无 <code>async/defer</code>）</strong></h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="variable language_">console</span>.<span class="title function_">log</span>(a); <span class="comment">// undefined（变量提升）</span></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">var</span> a = <span class="number">1</span>;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="variable language_">console</span>.<span class="title function_">log</span>(a); <span class="comment">// 1（前一个脚本已赋值）</span></span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 规则</span></span><br><span class="line"><span class="comment"> 变量/函数声明按脚本顺序提升，但跨脚本的变量提升不会合并。</span></span><br><span class="line"><span class="comment"> 前一个脚本的变量赋值对后续脚本可见（全局作用域共享）。</span></span><br><span class="line"><span class="comment"> --&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="2-带-defer-的脚本"><a href="#2-带-defer-的脚本" class="headerlink" title="2. 带 defer 的脚本"></a>2. 带 defer 的脚本</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">defer</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="variable language_">console</span>.<span class="title function_">log</span>(b); <span class="comment">// 1（所有 `defer` 脚本按顺序执行，前一个脚本已赋值）</span></span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">defer</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">var</span> b = <span class="number">1</span>;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment"> 规则：</span></span><br><span class="line"><span class="comment">   所有 defer 脚本在 HTML 解析完成后按文档顺序执行。</span></span><br><span class="line"><span class="comment">   变量提升逻辑等同于同步脚本，但执行时机延迟。</span></span><br><span class="line"><span class="comment"> --&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="3-带-async-的脚本"><a href="#3-带-async-的脚本" class="headerlink" title="3. 带 async 的脚本"></a>3. 带 async 的脚本</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">async</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="variable language_">console</span>.<span class="title function_">log</span>(c); <span class="comment">// 可能输出 `undefined` 或 `2`（取决于加载顺序）</span></span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">async</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">var</span> c = <span class="number">2</span>;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment"> 规则：</span></span><br><span class="line"><span class="comment">   异步脚本加载完成立即执行，执行顺序不可控。</span></span><br><span class="line"><span class="comment">   变量可能存在竞态条件，需避免依赖其他 async 脚本的变量。</span></span><br><span class="line"><span class="comment"> --&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="4-模块脚本（type-”module”）"><a href="#4-模块脚本（type-”module”）" class="headerlink" title="4. 模块脚本（type&#x3D;”module”）"></a>4. 模块脚本（type&#x3D;”module”）</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;module&quot;</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="variable language_">console</span>.<span class="title function_">log</span>(d); <span class="comment">// 报错（模块作用域隔离，无法访问全局变量）</span></span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">var</span> d = <span class="number">3</span>;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment"> 规则：</span></span><br><span class="line"><span class="comment">   模块脚本拥有独立作用域，变量不会提升到全局。</span></span><br><span class="line"><span class="comment">   跨模块变量需通过 import/export 显式传递。</span></span><br><span class="line"><span class="comment"> --&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="小结：-1"><a href="#小结：-1" class="headerlink" title="小结："></a>小结：</h4><ul>
+<li><p><strong>变量提升范围</strong>：</p>
+<ul>
+<li>同步脚本、defer 脚本：全局作用域，按顺序提升。</li>
+<li>async 脚本：全局作用域，但执行顺序不可控。</li>
+<li>模块脚本：模块作用域，无全局提升。</li>
+</ul>
+</li>
+<li><p><strong>依赖管理建议</strong>：</p>
+<ul>
+<li>优先用 defer 保证执行顺序，避免 async 变量冲突。</li>
+<li>使用 type&#x3D;”module” 隔离作用域，减少全局污染。</li>
+</ul>
+</li>
+<li><p><strong>严格模式</strong>：</p>
+<ul>
+<li>模块脚本自动启用严格模式（var 不会绑定到 window）。</li>
+</ul>
+</li>
+</ul>
+</div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/html/">html</a></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2019/06/web%E5%AE%89%E5%85%A8/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">web安全</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2017/11/iframe%E6%A0%87%E7%AD%BE%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/"><span class="level-item">iframe标签使用总结</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1 is-sticky"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar is-rounded" src="/images/avatar.png" alt="Woad"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Woad</p><p class="is-size-6 is-block">web前端工程师</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>深圳</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives/"><p class="title">16</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories/"><p class="title">3</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags/"><p class="title">10</p></a></div></div></nav></div></div><!--!--><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/Linux/"><span class="level-start"><span class="level-item">Linux</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/categories/Nodejs/"><span class="level-start"><span class="level-item">Nodejs</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/%E5%89%8D%E7%AB%AF/"><span class="level-start"><span class="level-item">前端</span></span><span class="level-end"><span class="level-item tag">9</span></span></a></li></ul></div></div></div><div class="column-right-shadow is-hidden-widescreen is-sticky"></div></div><div class="column column-right is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only order-3 is-sticky"><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2025-03-05T08:13:00.000Z">2025-03-05</time></p><p class="title"><a href="/2025/03/hello-world/">找工作</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-06-25T12:12:00.000Z">2024-06-25</time></p><p class="title"><a href="/2024/06/h5%E5%94%A4%E8%B5%B7APP/">h5唤起APP</a></p><p class="categories"><a href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-04-12T13:52:00.000Z">2024-04-12</time></p><p class="title"><a href="/2024/04/h5%E8%87%AA%E5%AE%9A%E4%B9%89%E5%BE%AE%E4%BF%A1%E5%88%86%E4%BA%AB/">h5自定义微信分享</a></p><p class="categories"><a href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-02-01T12:19:00.000Z">2024-02-01</time></p><p class="title"><a href="/2024/02/service%20worker%E6%9B%B4%E6%96%B0%E6%96%B9%E6%A1%88/">service worker更新方案</a></p><p class="categories"><a href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-01-13T13:39:00.000Z">2024-01-13</time></p><p class="title"><a href="/2024/01/websocket%E5%BF%83%E8%B7%B3%E6%A3%80%E6%B5%8B/">WebSocket 心跳检测机制</a></p><p class="categories"><a href="/categories/Nodejs/">Nodejs</a></p></div></article></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/CI-CD/"><span class="tag">CI/CD</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Nginx/"><span class="tag">Nginx</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/css/"><span class="tag">css</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/docker/"><span class="tag">docker</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/h5/"><span class="tag">h5</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/html/"><span class="tag">html</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/sentry/"><span class="tag">sentry</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/webSocket/"><span class="tag">webSocket</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E5%AE%89%E5%85%A8/"><span class="tag">安全</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"><span class="tag">性能优化</span><span class="tag">4</span></a></div></div></div></div></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/images/logo.svg" alt="Woad的博客" height="28"></a><p class="is-size-7"><span>&copy; 2025 Woad</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script data-pjax src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script data-pjax src="/js/back_to_top.js" defer></script><script data-pjax src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script data-pjax src="/js/insight.js" defer></script><script data-pjax>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>
